@@ -1,0 +1,25 @@
+{
+  "global_ckey": {
+    "description": "全局 ckey（强烈推荐：填一次，所有API自动使用，单个API的ckey留空即可）",
+    "type": "string",
+    "obvious_hint": true
+  },
+  "apis": {
+    "type": "template_list",
+    "description": "多媒体免费API列表（支持关键词直接触发）",
+    "templates": {
+      "api_entry": {
+        "name": "API 配置项",
+        "items": {
+          "name": { "description": "API名称（/call 时使用）", "type": "string" },
+          "base_url": { "description": "完整接口地址", "type": "string" },
+          "ckey": { "description": "单个API专用ckey（全局ckey已设置时可留空）", "type": "string", "obvious_hint": true },
+          "method": { "description": "请求方法", "type": "string", "options": ["GET", "POST"], "default": "GET" },
+          "body_template": { "description": "POST JSON模板，用 \"{prompt}\" 占位（GET忽略）", "type": "string", "default": "{\"prompt\": \"{prompt}\"}" },
+          "media_type": { "description": "返回类型（auto=自动识别，最推荐）", "type": "string", "options": ["auto", "text", "image", "video", "audio"], "default": "auto" },
+          "keywords": { "description": "触发关键词（多个用英文逗号分隔，例如 看看腿,腿,kt）。留空则不直接触发", "type": "string", "default": "" }
+        }
+      }
+    }
+  }
+}
